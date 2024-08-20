@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners
+        android:bottomLeftRadius="@dimen/exercise_filter_inner_corner_radius"
+        android:bottomRightRadius="@dimen/exercise_filter_inner_corner_radius"
+        android:topLeftRadius="@dimen/exercise_filter_outer_corner_radius"
+        android:topRightRadius="@dimen/exercise_filter_outer_corner_radius" />
+    <solid android:color="@color/filter_item_background_color" />
+</shape>

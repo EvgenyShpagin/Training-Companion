@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.base.ExerciseChoiceViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        onBackPressed="@{viewModel::onBackPressed}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mine_shaft"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/sheet_title"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/title_exercise_selection"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="?attr/colorOutline" />
+
+        <android.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/search_view_bg"
+            android:foregroundTint="@color/white"
+            android:iconifiedByDefault="false"
+            android:queryHint="@string/hint_search_exercise"
+            android:searchIcon="@drawable/ic_search_24"
+            android:theme="@style/ThemeOverlay.App.EditText.TextAppearance" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/exercises_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:requiresFadingEdge="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/filter_button"
+                style="@style/Widget.App.FAB.Orange"
+                layoutMarginBottom="@{viewModel.exerciseIsSelected ? @dimen/exercise_filter_button_bottom_margin : @dimen/fab_increased_bottom_margin}"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:contentDescription="@string/fab_filter_exercises_content_description"
+                android:onClick="@{viewModel::navigateToFilterFragment}"
+                app:srcCompat="@drawable/ic_filter_24" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/next_button"
+                style="@style/Widget.App.FAB.White"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/fab_increased_bottom_margin"
+                android:contentDescription="@string/fab_select_exercise_content_description"
+                android:onClick="@{viewModel::navigateToDetails}"
+                android:visibility="@{viewModel.exerciseIsSelected ? View.VISIBLE : View.INVISIBLE}"
+                app:srcCompat="@drawable/ic_arrow_forward_12" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</layout>

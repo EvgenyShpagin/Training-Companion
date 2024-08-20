@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/chinese_black"
+        app:cardCornerRadius="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/training_type_icon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/list_icon_workout_type_image"
+                app:layout_constraintBottom_toBottomOf="@+id/divider"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/ShapeAppearance.App.Corner.TopLeft"
+                tools:srcCompat="@drawable/cardio_thumbnail" />
+
+            <TextView
+                android:id="@+id/plan_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceTitleLarge"
+                android:textColor="?colorOnSurface"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/training_type_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="leg workout on tuesday" />
+
+            <TextView
+                android:id="@+id/support_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?colorOnSurfaceVariant"
+                app:layout_constraintEnd_toEndOf="@+id/plan_name"
+                app:layout_constraintStart_toStartOf="@+id/plan_name"
+                app:layout_constraintTop_toBottomOf="@+id/plan_name"
+                tools:text="Strength training plan • 05/21/23" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/divider_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/support_text" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fact_item_1"
+                        style="@style/Widget.App.TextView.PlanFact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="16dp"
+                        android:visibility="gone"
+                        tools:text="3 exercises"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/fact_item_2"
+                        style="@style/Widget.App.TextView.PlanFact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone"
+                        tools:text="15 sets"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/fact_item_3"
+                        style="@style/Widget.App.TextView.PlanFact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone"
+                        tools:text="no environment"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/fact_item_4"
+                        style="@style/Widget.App.TextView.PlanFact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone"
+                        tools:text="3 body parts"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/fact_item_5"
+                        style="@style/Widget.App.TextView.PlanFact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone"
+                        tools:text="used 3 times"
+                        tools:visibility="visible" />
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

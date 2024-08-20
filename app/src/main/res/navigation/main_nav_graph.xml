@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@+id/startWorkoutFragment">
+
+    <fragment
+        android:id="@id/startWorkoutFragment"
+        android:name="com.training.companion.presentation.fragments.toplevel.WorkoutsFragment"
+        android:label="WorkoutFragment"
+        tools:layout="@layout/fragment_workouts">
+        <action
+            android:id="@+id/to_powerWorkoutScenarioFragment"
+            app:destination="@id/powerWorkoutScenarioFragment" />
+    </fragment>
+    <fragment
+        android:id="@id/plansFragment"
+        android:name="com.training.companion.presentation.fragments.toplevel.PlansFragment"
+        android:label="PlansFragment"
+        tools:layout="@layout/fragment_plans">
+        <action
+            android:id="@+id/to_typeFragment"
+            app:destination="@id/newPlanTypeFragment" />
+        <action
+            android:id="@+id/to_planDetailsFragment"
+            app:destination="@id/planDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPlanTypeFragment"
+        android:name="com.training.companion.presentation.fragments.NewPlanWorkoutTypeFragment"
+        android:label="NewPlanTypeFragment"
+        tools:layout="@layout/fragment_new_plan_workout_type">
+        <action
+            android:id="@+id/to_planEditFragment"
+            app:destination="@id/planEditFragment" />
+        <action
+            android:id="@+id/to_exerciseChoiceFragment"
+            app:destination="@id/exerciseChoiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@id/settingsFragment"
+        android:name="com.training.companion.presentation.fragments.toplevel.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/powerWorkoutPlaceFragment"
+        android:name="com.training.companion.presentation.fragments.PowerWorkoutPlaceFragment"
+        android:label="PowerWorkoutPlaceFragment"
+        tools:layout="@layout/fragment_power_workout_place">
+        <action
+            android:id="@+id/to_powerWorkoutRestTimeFragment"
+            app:destination="@id/powerWorkoutRestTimeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/powerWorkoutScenarioFragment"
+        android:name="com.training.companion.presentation.fragments.PowerWorkoutScenarioFragment"
+        android:label="PowerWorkoutScenarioFragment"
+        tools:layout="@layout/fragment_power_workout_scenario">
+        <action
+            android:id="@+id/to_workoutFragment"
+            app:destination="@id/workoutFragment"
+            app:popUpTo="@id/startWorkoutFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/to_planChoiceFragment"
+            app:destination="@id/planChoiceFragment" />
+        <argument
+            android:name="chosenPlanId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/to_workoutTypeChoiceFragment"
+            app:destination="@id/workoutTypeChoiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/planChoiceFragment"
+        android:name="com.training.companion.presentation.fragments.PlanChoiceFragment"
+        android:label="planChoiceFragment"
+        tools:layout="@layout/fragment_plan_choice">
+        <action
+            android:id="@+id/to_powerWorkoutScenarioFragment"
+            app:destination="@id/powerWorkoutScenarioFragment"
+            app:popUpTo="@id/powerWorkoutScenarioFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/powerWorkoutRestTimeFragment"
+        android:name="com.training.companion.presentation.fragments.PowerWorkoutRestTimeFragment"
+        android:label="PowerWorkoutRestTimeFragment"
+        tools:layout="@layout/fragment_power_workout_rest_time">
+        <action
+            android:id="@+id/to_workoutFragment"
+            app:destination="@id/workoutFragment"
+            app:popUpTo="@id/startWorkoutFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.training.companion.presentation.fragments.toplevel.WorkoutFragment"
+        android:label="WorkoutFragment"
+        tools:layout="@layout/fragment_workout">
+        <action
+            android:id="@+id/to_suspenseFragment"
+            app:destination="@id/suspenseFragment" />
+        <action
+            android:id="@+id/to_resultsFragment"
+            app:destination="@id/workoutResultsFragment"
+            app:launchSingleTop="true"/>
+        <action
+            android:id="@+id/to_setCompletionFragment"
+            app:destination="@id/setCompletionBottomSheet" />
+    </fragment>
+    <fragment
+        android:id="@+id/planEditFragment"
+        android:name="com.training.companion.presentation.fragments.PlanEditFragment"
+        android:label="PlanEditFragment"
+        tools:layout="@layout/fragment_plan_edit">
+        <argument
+            android:name="setBuilder"
+            app:argType="com.training.companion.presentation.models.SetDetailsBuilder" />
+        <action
+            android:id="@+id/to_exerciseChoiceFragment"
+            app:destination="@id/exerciseChoiceFragment" />
+        <action
+            android:id="@+id/to_planDetailsFragment"
+            app:destination="@id/planDetailsFragment"
+            app:popUpTo="@id/planDetailsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/planDetailsFragment"
+        android:name="com.training.companion.presentation.fragments.PlanDetailsFragment"
+        android:label="PlanDetailsFragment"
+        tools:layout="@layout/fragment_plan_details">
+        <argument
+            android:name="planId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/to_planEditFragment"
+            app:destination="@id/planEditFragment" />
+        <action
+            android:id="@+id/to_workoutFragment"
+            app:launchSingleTop="true"
+            app:destination="@id/workoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseChoiceFragment"
+        android:name="com.training.companion.presentation.fragments.ExerciseChoiceFragment"
+        android:label="SelectExerciseFragment"
+        tools:layout="@layout/fragment_exercise_choice">
+        <argument
+            android:name="setBuilder"
+            app:argType="com.training.companion.presentation.models.SetDetailsBuilder" />
+        <action
+            android:id="@+id/to_exerciseDetailsFragment"
+            app:destination="@id/exerciseDetailsFragment" />
+        <action
+            android:id="@+id/to_equipmentFilterFragment"
+            app:destination="@id/equipmentFilterFragment" />
+        <action
+            android:id="@+id/to_setCompletionFragment"
+            app:destination="@id/setCompletionBottomSheet"
+            app:popUpTo="@id/workoutFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseDetailsFragment"
+        android:name="com.training.companion.presentation.fragments.SetDetailsFragment"
+        android:label="ExerciseDetailsFragment"
+        tools:layout="@layout/fragment_set_details">
+        <argument
+            android:name="setBuilder"
+            app:argType="com.training.companion.presentation.models.SetDetailsBuilder" />
+        <action
+            android:id="@+id/back_to_planEditFragment"
+            app:destination="@id/planEditFragment"
+            app:popUpTo="@id/planEditFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/to_exerciseSetsBottomSheet"
+            app:destination="@id/exerciseSetsBottomSheet" />
+        <action
+            android:id="@+id/to_exerciseRepsPlanEditBottomSheet"
+            app:destination="@id/exerciseRepsPlanEditBottomSheet" />
+        <action
+            android:id="@+id/to_exerciseRepsWorkoutSetBottomSheet"
+            app:destination="@id/exerciseRepsWorkoutSetBottomSheet" />
+        <action
+            android:id="@+id/to_exerciseDurationBottomSheet"
+            app:destination="@id/exerciseDurationBottomSheet" />
+        <action
+            android:id="@+id/to_exerciseRestTimeBottomSheet"
+            app:destination="@id/exerciseRestTimeBottomSheet" />
+        <action
+            android:id="@+id/to_exerciseWeightBottomSheet"
+            app:destination="@id/exerciseWeightBottomSheet" />
+        <action
+            android:id="@+id/to_setCompletionFragment"
+            app:destination="@id/setCompletionBottomSheet"
+            app:popUpTo="@id/workoutFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <dialog
+        android:id="@+id/exerciseSetsBottomSheet"
+        android:name="com.training.companion.presentation.dialogs.ExerciseSetsBottomSheet"
+        android:label="ExerciseParamSetsBottomSheet"
+        tools:layout="@layout/bottom_sheet_exercise_sets" />
+    <dialog
+        android:id="@+id/exerciseRestTimeBottomSheet"
+        android:name="com.training.companion.presentation.dialogs.ExerciseRestTimeBottomSheet"
+        android:label="ExerciseParamRestTimeBottomSheet"
+        tools:layout="@layout/bottom_sheet_exercise_rest" />
+    <dialog
+        android:id="@+id/exerciseWeightBottomSheet"
+        android:name="com.training.companion.presentation.dialogs.ExerciseParamWeightBottomSheet"
+        android:label="ExerciseParamWeightBottomSheet"
+        tools:layout="@layout/bottom_sheet_exercise_weight" />
+    <dialog
+        android:id="@+id/exerciseDurationBottomSheet"
+        android:name="com.training.companion.presentation.dialogs.ExerciseDurationBottomSheet"
+        android:label="ExerciseParamDurationBottomSheet"
+        tools:layout="@layout/bottom_sheet_exercise_duration" />
+    <dialog
+        android:id="@+id/exerciseRepsPlanEditBottomSheet"
+        android:name="com.training.companion.presentation.dialogs.ExerciseRepsPlanEditBottomSheet"
+        android:label="ExerciseParamRepsBottomSheet"
+        tools:layout="@layout/bottom_sheet_exercise_plan_edit_reps" />
+    <dialog
+        android:id="@+id/exerciseRepsWorkoutSetBottomSheet"
+        android:name="com.training.companion.presentation.dialogs.ExerciseRepsWorkoutSetBottomSheet"
+        android:label="ExerciseParamRepsBottomSheet"
+        tools:layout="@layout/bottom_sheet_exercise_workout_set_reps" />
+    <fragment
+        android:id="@+id/equipmentFilterFragment"
+        android:name="com.training.companion.presentation.fragments.EquipmentFilterFragment"
+        android:label="EquipmentFilterFragment"
+        tools:layout="@layout/fragment_equipment_filter">
+        <action
+            android:id="@+id/to_exerciseChoiceFragment"
+            app:destination="@id/exerciseChoiceFragment"
+            app:popUpTo="@id/exerciseChoiceFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="setBuilder"
+            app:argType="com.training.companion.presentation.models.SetDetailsBuilder" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutTypeChoiceFragment"
+        android:name="com.training.companion.presentation.fragments.WorkoutTypeChoiceFragment"
+        android:label="WorkoutTypeChoiceFragment"
+        tools:layout="@layout/fragment_workout_type_choice">
+        <action
+            android:id="@+id/to_powerWorkoutPlaceFragment"
+            app:destination="@id/powerWorkoutPlaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/suspenseFragment"
+        android:name="com.training.companion.presentation.fragments.SuspenseFragment"
+        android:label="SuspenseFragment"
+        tools:layout="@layout/fragment_suspense">
+        <action
+            android:id="@+id/to_resultsFragment"
+            app:destination="@id/workoutResultsFragment"
+            app:popUpTo="@id/workoutResultsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutResultsFragment"
+        android:name="com.training.companion.presentation.fragments.WorkoutResultsFragment"
+        android:label="FinishWorkoutFragment"
+        tools:layout="@layout/fragment_workout_results">
+        <action
+            android:id="@+id/to_startWorkoutFragment"
+            app:destination="@id/startWorkoutFragment"
+            app:popUpTo="@id/startWorkoutFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <dialog
+        android:id="@+id/setCompletionBottomSheet"
+        android:name="com.training.companion.presentation.dialogs.SetCompletionBottomSheet"
+        android:label="SetCompletionFragment"
+        tools:layout="@layout/bottom_sheet_set_completion">
+        <action
+            android:id="@+id/to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+        <action
+            android:id="@+id/to_exerciseChoiceFragment"
+            app:destination="@id/exerciseChoiceFragment" />
+        <action
+            android:id="@+id/to_exerciseDetailsFragment"
+            app:destination="@id/exerciseDetailsFragment" />
+    </dialog>
+</navigation>

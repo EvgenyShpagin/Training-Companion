@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.PlaceViewModel" />
+
+        <import type="com.training.companion.domain.enums.WorkoutPlace" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:alpha="0.2"
+            android:contentDescription="@string/bg_image_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_power_training_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_workout_toolbar" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/start_workout_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:navigationIconTint="?attr/colorOnSurface"
+            app:navigationOnClickListener="@{(view) -> viewModel.navigateBack(view)}"
+            app:title="@string/strength_training"
+            app:titleTextColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/choose_place_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/power_workout_place_title"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/place_at_home"
+            app:layout_constraintTop_toBottomOf="@+id/start_workout_toolbar" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/place_at_home"
+            style="@style/Widget.App.PowerTraining.Button"
+            isSelected="@{viewModel.selectedPlace == WorkoutPlace.AtHome}"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:onClick="@{() -> viewModel.setSelectedPlace(WorkoutPlace.AtHome)}"
+            android:text="@string/place_at_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_place_title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/place_outdoors"
+            style="@style/Widget.App.PowerTraining.Button"
+            isSelected="@{viewModel.selectedPlace == WorkoutPlace.Outdoors}"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:onClick="@{() -> viewModel.onSelect(WorkoutPlace.Outdoors)}"
+            android:text="@string/place_outdoors"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/place_at_home" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/place_gym"
+            style="@style/Widget.App.PowerTraining.Button"
+            isSelected="@{viewModel.selectedPlace == WorkoutPlace.Gym}"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:onClick="@{() -> viewModel.onSelect(WorkoutPlace.Gym)}"
+            android:text="@string/place_gym"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/place_outdoors" />
+
+        <TextView
+            android:id="@+id/select_place_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:alpha="0.8"
+            android:text="@string/place_select_description"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintEnd_toEndOf="@+id/place_gym"
+            app:layout_constraintStart_toStartOf="@+id/place_gym"
+            app:layout_constraintTop_toBottomOf="@+id/place_gym" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/next_button"
+            style="@style/Widget.App.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_gravity="bottom"
+            android:layout_margin="16dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:enabled="@{viewModel.isPlaceSelected}"
+            android:onClick="@{(view) -> viewModel.onNextClick(view)}"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/big_button_corner_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

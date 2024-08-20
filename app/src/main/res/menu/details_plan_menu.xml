@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/edit_plan"
+        android:icon="@drawable/ic_edit_24"
+        android:title="@string/plan_details_menu_item_edit"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/start_workout"
+        android:icon="@drawable/ic_play_outlined_24"
+        android:title="@string/button_plan_start_training"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/duplicate_plan"
+        android:icon="@drawable/ic_duplicate_24"
+        android:title="@string/plan_duplicate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/delete_plan"
+        android:icon="@drawable/ic_delete_24"
+        android:title="@string/plan_delete"
+        app:showAsAction="ifRoom" />
+</menu>

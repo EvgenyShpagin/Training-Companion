@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.base.TimeRelatedExerciseParamViewModel" />
+        <import type="com.training.companion.presentation.util.UtilsKt"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:theme="@style/ThemeOverlay.App.BottomSheetDialog"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <View
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:background="@drawable/plan_exercise_param_item_shape_selected"
+            app:layout_constraintBottom_toBottomOf="@+id/minutes_label_duration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/minutes_picker_duration" />
+
+        <TextView
+            android:id="@+id/sheet_title"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/title_duration_full"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/mTitleDivider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="?attr/colorOutline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sheet_title" />
+
+        <android.widget.NumberPicker
+            android:id="@+id/minutes_picker_duration"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:onValueChange="@{(view, oldValue, newValue) -> viewModel.onMinutesChanged(newValue)}"
+            android:theme="@style/Widget.AppTheme.NumberPicker.ColorOnPrimary"
+            app:formatter="@{UtilsKt.numberPickerTimeFormatter}"
+            app:layout_constraintEnd_toStartOf="@+id/seconds_picker_duration"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/mTitleDivider"
+            app:maxValue="@{10}"
+            app:value="@{viewModel.chosenTime.minutes}" />
+
+        <TextView
+            android:id="@+id/column_duration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="4sp"
+            android:text="@string/column_char"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/minutes_picker_duration"
+            app:layout_constraintEnd_toStartOf="@+id/seconds_picker_duration"
+            app:layout_constraintStart_toEndOf="@+id/minutes_picker_duration"
+            app:layout_constraintTop_toTopOf="@+id/minutes_picker_duration" />
+
+        <android.widget.NumberPicker
+            android:id="@+id/seconds_picker_duration"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:foregroundTint="?attr/colorOnSurface"
+            android:onValueChange="@{(view, oldValue, newValue) -> viewModel.onSecondsChanged(newValue)}"
+            android:theme="@style/Widget.AppTheme.NumberPicker.ColorOnPrimary"
+            app:formatter="@{UtilsKt.numberPickerTimeFormatter}"
+            app:layout_constraintBottom_toBottomOf="@+id/minutes_picker_duration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/minutes_picker_duration"
+            app:layout_constraintTop_toTopOf="@+id/minutes_picker_duration"
+            app:maxValue="@{59}"
+            app:value="@{viewModel.chosenTime.seconds}" />
+
+        <TextView
+            android:id="@+id/minutes_label_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:paddingBottom="20dp"
+            android:text="@string/minutes_label"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/minutes_picker_duration"
+            app:layout_constraintStart_toStartOf="@+id/minutes_picker_duration"
+            app:layout_constraintTop_toBottomOf="@id/minutes_picker_duration" />
+
+        <TextView
+            android:id="@+id/seconds_label_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/seconds_label"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/seconds_picker_duration"
+            app:layout_constraintStart_toStartOf="@+id/seconds_picker_duration"
+            app:layout_constraintTop_toBottomOf="@+id/seconds_picker_duration" />
+
+        <Button
+            android:id="@+id/button_remove"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32dp"
+            android:enabled="@{viewModel.previouslyChosenTime != null}"
+            android:text="@string/remove"
+            app:layout_constraintBottom_toBottomOf="@+id/button_submit"
+            app:layout_constraintEnd_toStartOf="@+id/button_submit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button_submit" />
+
+        <Button
+            android:id="@+id/button_submit"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32dp"
+            android:layout_marginTop="@dimen/_32dp"
+            android:enabled="@{viewModel.timeIsCorrect}"
+            android:text="@string/submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button_remove"
+            app:layout_constraintTop_toBottomOf="@+id/background" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="equipment"
+            type="com.training.companion.domain.models.Equipment" />
+
+        <variable
+            name="isChecked"
+            type="boolean" />
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="textStyle"
+            type="int" />
+    </data>
+
+    <FrameLayout
+        isSelected="@{isChecked}"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:onClick="@{onClickListener}">
+
+        <TextView
+            textStyle="@{textStyle}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@{equipment.name}"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="?attr/colorOnPrimary" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:checked="@{isChecked}"
+            android:clickable="false" />
+
+    </FrameLayout>
+</layout>

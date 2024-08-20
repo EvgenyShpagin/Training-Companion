@@ -1,0 +1,47 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.TrainingCompanion" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/dark_orange</item>
+        <item name="colorOnPrimary">@color/light_orange</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/light_gray</item>
+        <item name="colorOnSecondary">@color/baltic_sea</item>
+        <item name="colorSurface">@color/cod_gray</item>
+        <item name="colorOnSurface">#DDDDDD</item>
+        <item name="colorOnSurfaceVariant">@color/light_orange</item>
+        <item name="colorSurfaceVariant">@color/mine_shaft</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:colorBackground">@color/cod_gray</item>
+        <item name="colorSecondaryContainer">@color/orange</item>
+        <item name="colorPrimaryContainer">@color/eerie_black</item>
+        <item name="colorOutline">@color/dark_charcoal</item>
+        <item name="colorError">@color/candy_pink</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="actionCardViewAppearance">@style/Widget.App.Actions.CardView</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
+        <item name="popupMenuStyle">@style/Widget.App.PopupMenu</item>
+        <item name="popupTheme">@style/Widget.App.ContextMenu</item>
+        <item name="android:actionOverflowMenuStyle">@style/Widget.App.PopupMenu</item>
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.App.PopupMenu.Large</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.App.PopupMenu.Small</item>
+        <item name="colorControlNormal">?attr/colorOnSurface</item>
+        <item name="navigationIconTint">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@android:color/transparent
+        </item>
+        <item name="bottomSheetStyle">@style/Widget.App.BottomSheet.Modal</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="behavior_skipCollapsed">true</item>
+        <item name="behavior_halfExpandedRatio">0.2</item>
+    </style>
+
+    <style name="ThemeOverlay.App.EditText.TextAppearance" parent="">
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey_cloud</item>
+    </style>
+
+</resources>

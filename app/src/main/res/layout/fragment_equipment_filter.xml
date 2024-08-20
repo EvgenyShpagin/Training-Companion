@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.EquipmentFilterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        onBackPressed="@{viewModel::onBackPressed}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/equipment_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:navigationIconTint="?attr/colorOnSurface"
+            app:navigationOnClickListener="@{(view) -> viewModel.onBackPressed(view)}"
+            app:title="Equipment"
+            app:titleTextColor="?attr/colorOnSurface" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/equipment_filter_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:requiresFadingEdge="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/submit_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/equipment_toolbar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submit_button"
+            style="@style/Widget.App.Button.LargeBottom.Primary"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:alpha="@{viewModel.uiState.buttonIsEnabled ? 1.0f : 0.5f}"
+            android:enabled="@{viewModel.uiState.buttonIsEnabled}"
+            android:onClick="@{(view) -> viewModel.onSubmitButtonClick(view)}"
+            android:text="@string/submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.ExerciseRepsViewModel" />
+
+        <import type="com.training.companion.domain.models.Reps" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:theme="@style/ThemeOverlay.App.BottomSheetDialog"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <TextView
+            android:id="@+id/sheet_title"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/title_reps_full"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/mTitleDivider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="?attr/colorOutline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sheet_title" />
+
+        <FrameLayout
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/exercise_param_block_height"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:background="@drawable/plan_exercise_param_item_shape_selected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mTitleDivider">
+
+            <com.shawnlin.numberpicker.NumberPicker
+                android:id="@+id/reps_picker_exact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:np_dividerColor="@color/light_orange_40"
+                app:np_dividerType="underline"
+                app:np_itemSpacing="12dp"
+                app:np_max="100"
+                app:np_maxFlingVelocityCoefficient="3"
+                app:np_min="1"
+                app:np_orientation="horizontal"
+                app:np_selectedTextColor="?attr/colorOnSurfaceVariant"
+                app:np_selectedTextSize="28sp"
+                app:np_textColor="@color/light_orange_40"
+                app:np_textSize="26sp"
+                app:np_wheelItemCount="7"
+                app:onValueChangedListener="@{(view, oldVal, newVal) -> viewModel.onRepsExactChanged(newVal)}"
+                app:value="@{viewModel.uiState.repsAsExact}"
+                tools:visibility="gone" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/button_remove"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32dp"
+            android:enabled="@{viewModel.uiState.removeButtonIsEnabled}"
+            android:text="@string/remove"
+            app:layout_constraintBottom_toBottomOf="@+id/button_submit"
+            app:layout_constraintEnd_toStartOf="@+id/button_submit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button_submit" />
+
+        <Button
+            android:id="@+id/button_submit"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32dp"
+            android:layout_marginTop="@dimen/_32dp"
+            android:enabled="@{viewModel.uiState.submitButtonIsEnabled}"
+            android:text="@string/submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button_remove"
+            app:layout_constraintTop_toBottomOf="@+id/background" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

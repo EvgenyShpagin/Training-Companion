@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/workoutFragment"
+        android:enabled="true"
+        android:icon="@drawable/nav_view_ic_play_selector"
+        android:title="@string/menu_workout" />
+    <item
+        android:id="@+id/plansFragment"
+        android:enabled="true"
+        android:icon="@drawable/nav_view_ic_plans_selector"
+        android:title="@string/menu_plans" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:enabled="true"
+        android:icon="@drawable/nav_view_ic_settings_selector"
+        android:title="@string/menu_settings" />
+</menu>

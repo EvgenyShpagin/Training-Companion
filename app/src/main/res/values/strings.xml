@@ -1,0 +1,270 @@
+<resources>
+    <string name="app_name">Training Companion</string>
+    <!-- LoginActivity -->
+    <string name="google_login">Login with Google</string>
+    <string name="welcome_display">Glad to see you!</string>
+    <string name="welcome_headline">Training Companion will help you in the process of training and not only.</string>
+    <string name="auth_display">Let’s sign you in!</string>
+    <string name="auth_headline">This is necessary to save or restore your progress.</string>
+    <!-- Regular button -->
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="continue_">Continue</string>
+    <string name="remove">Remove</string>
+    <string name="delete">Delete</string>
+    <string name="add">Add</string>
+    <string name="save">Save</string>
+    <!-- Menu -->
+    <string name="menu_home">Home</string>
+    <string name="menu_records">Records</string>
+    <string name="menu_workout">Workout</string>
+    <string name="menu_plans">Plans</string>
+    <string name="menu_settings">Settings</string>
+    <!-- WorkoutsFragment -->
+    <string name="workouts_title">Workouts</string>
+    <string name="workout_title">Workout</string>
+    <string name="no_workouts_label">No workouts</string>
+    <string name="strength">Strength</string>
+    <string name="cardio">Cardio</string>
+    <string name="functional">Functional</string>
+    <string name="yoga_and_pilates">Yoga &amp; Pilates</string>
+    <string name="start">Start</string>
+    <string name="start_workout_fragment_headline">Get ready for a workout</string>
+    <string name="start_workout_fragment_title">Choose a workout type to start</string>
+
+    <!-- PowerWorkoutPlaceFragment -->
+    <string name="place_at_home">At home</string>
+    <string name="place_outdoors">Outdoors</string>
+    <string name="place_gym">Gym</string>
+    <string name="place_select_description">To find a list of possible exercises, you need to choose a place where you are going to train. \nAlso, this information will be added to the history.</string>
+    <string name="at_home_with_env">With environment</string>
+    <string name="at_home_without_env">Without environment</string>
+    <string name="power_workout_place_title">Choose a workout place</string>
+    <!-- PowerWorkoutScenarioFragment -->
+    <string name="scenario_title">Choose the scenario</string>
+    <string name="scenario_description">The scenario determines how to get the necessary training data by organizing the process</string>
+    <string name="scenario_use_plan">Use workout plan</string>
+    <string name="scenario_use_plan_description">Workout will be based on your plan (no need to select exercise and rest time)</string>
+    <string name="scenario_dont_use_plan">Don\'t use workout plan</string>
+    <string name="scenario_dont_use_plan_description">Data for training must be entered in its process (exercise performed and rest time)</string>
+    <!-- PowerWorkoutRestTime -->
+    <string name="rest_time_title">Select rest time</string>
+    <string name="rest_time_description">After completing each set, a timer will be started, counting down the rest time you have chosen.</string>
+    <string name="start_workout">Start workout</string>
+    <string name="minutes_label">minutes</string>
+    <string name="seconds_label">seconds</string>
+    <string name="column_char" translatable="false">:</string>
+    <string name="dash_char" translatable="false">-</string>
+    <string name="divider_or">OR</string>
+    <string name="no_countdown_rest_time">I will be starting when I want</string>
+    <!-- WorkoutFragment -->
+    <string name="pause_workout">Pause workout</string>
+    <string name="next_exercise_title">Next exercise</string>
+    <string name="last_exercises_title">Last completed exercises</string>
+    <string name="label_today">today</string>
+    <string name="label_yesterday">yesterday</string>
+    <string name="complete_seconds">%ds</string>
+    <string name="seconds_short">s</string>
+    <string name="start_exercise">Start the exercise</string>
+    <string name="show_actions">Show actions</string>
+    <string name="actions_card_view_title">Available actions</string>
+    <string name="init_time_00_00" translatable="false">00:00</string>
+    <string name="workout_stage_warm_up">Warm-up</string>
+    <string name="workout_stage_exercise">Exercise</string>
+    <string name="workout_stage_rest">Rest</string>
+    <string name="workout_stage_stretching">Stretching</string>
+    <string name="workout_stage_suspense">Suspense</string>
+    <string name="workout_stage_finish">Finish</string>
+    <string-array name="workout_stages">
+        <item>@string/workout_stage_warm_up</item>
+        <item>@string/workout_stage_exercise</item>
+        <item>@string/workout_stage_rest</item>
+        <item>@string/workout_stage_stretching</item>
+        <item>@string/workout_stage_suspense</item>
+        <item>@string/workout_stage_finish</item>
+    </string-array>
+    <string name="reps_button_8" translatable="false">8</string>
+    <string name="reps_button_10" translatable="false">10</string>
+    <string name="reps_button_12" translatable="false">12</string>
+    <string name="reps_button_14" translatable="false">14</string>
+    <string name="action_restart_set">Restart set</string>
+    <string name="action_complete_set">Complete the set</string>
+    <string name="action_go_to_rest">To rest</string>
+    <string name="action_change_rest_time">Change rest time</string>
+    <string name="action_return_to_prev_stage">To previous stage</string>
+    <string name="action_go_to_exercise">@string/start_exercise</string>
+    <string name="action_add_extra_stopwatch">Add an extra stopwatch</string>
+    <string name="time_HH_MM">%02d:%02d</string>
+    <string name="scenario_no_plans_to_choose">You don\'t have plans</string>
+    <string name="title_choose_plans">Choose a plan to use</string>
+    <string name="begin_button">Begin</string>
+    <!-- SuspenseFragment -->
+    <string name="menu_item_finish_workout">Finish workout</string>
+    <string name="title_pause">Pause</string>
+    <!-- SetCompletionFragment -->
+    <string name="title_set_completion">Completion of the set</string>
+    <string name="search_exercise_title">Name of the exercise</string>
+    <string name="user_results_title">Your results</string>
+    <string name="set_complete_time">Set was completed in %s</string>
+    <string name="hint_reps_number">Number of reps</string>
+    <string name="toast_enter_set_details">Enter details to continue</string>
+    <!-- PlansFragment -->
+    <string name="plans_fragment_headline">Training plans</string>
+    <string name="plan_create">Create plan</string>
+    <string name="plan_exercise_number_field">№</string>
+    <string name="plan_exercise_field">Exercise</string>
+    <string name="plan_reps_field">Reps</string>
+    <string name="plan_rest_field">Rest</string>
+    <string name="plan_sets_field">Sets</string>
+    <string name="plan_duration_field">Duration</string>
+    <string name="plan_comment">Comment:</string>
+    <string name="plan_reps_max">max</string>
+    <string name="edit_plan">Plan editing</string>
+    <string name="save_plan">Save plan</string>
+    <string name="plan_name">Plan name</string>
+    <string name="label_required">Required</string>
+    <string name="label_optional">Optional</string>
+    <string name="add_plan_exercise">Add exercise</string>
+    <string name="hint_search_exercise">Search exercise</string>
+    <string name="title_sets">Sets</string>
+    <string name="title_exercise_selection">Exercise selection</string>
+    <string name="title_exercise_details">Details</string>
+    <string name="title_reps">Repetitions</string>
+    <string name="title_rest">Rest</string>
+    <string name="title_duration">Duration</string>
+    <string name="title_weight">Weight</string>
+    <string name="helper_text_plan_exercise_sets">The exercise will be performed this number of times</string>
+    <string name="helper_text_plan_exercise_rest_not_selected">If not specified, the rest time won’t be limited, the current time will display the stopwatch</string>
+    <string name="helper_text_plan_exercise_reps_not_selected">The number of repetitions in one set of the exercise</string>
+    <string name="helper_text_plan_exercise_duration_not_selected">If not specified, the duration will be calculated by the stopwatch</string>
+    <string name="helper_text_plan_exercise_rest_selected">After each set, a countdown timer starts for the selected rest time</string>
+    <string name="helper_text_plan_exercise_reps_selected">The number of repetitions in one set of the exercise</string>
+    <string name="helper_text_plan_exercise_duration_selected">During the exercising, a timer will start to count down the selected time</string>
+    <string name="helper_text_plan_exercise_weight">Weight of equipment used in the selected exercise</string>
+    <string name="fact_item_no_equipment">no equipment</string>
+    <string name="plan_creation_date">Created on %s</string>
+    <string name="strength_training">Strength training</string>
+    <string name="functional_training">Functional training</string>
+    <string name="yoga_and_pilates_training">Yoga &amp; Pilates training</string>
+    <string name="cardio_training">Cardio training</string>
+    <string name="button_plan_start_training">Start training</string>
+    <string name="button_plan_view_details">View details</string>
+    <string name="equipment_all_special_item">All equipment</string>
+    <string name="plan_delete">Delete</string>
+    <string name="plan_edit">Edit</string>
+    <string name="plan_duplicate">Duplicate</string>
+    <string name="plan_name_copy_suffix_word">copy</string>
+    <string name="plan_no_plans_helper_text">To add use the corresponding button below</string>
+    <string name="plan_no_plans_label">No plans</string>
+
+    <!-- Edit Plan -->
+    <string name="create_plan_param_weight">&#160;with %s</string>
+    <string name="create_plan_param_duration">for %s</string>
+    <string name="create_plan_param_rest">followed by %s rest</string>
+    <string name="weight_kg_suffix">%s kg</string>
+    <string name="weight_lb_suffix">%s lb</string>
+    <string name="auxiliary_param_reps_text" translatable="false">×</string>
+    <string name="auxiliary_param_weight_text">with</string>
+    <string name="auxiliary_param_duration_text">for</string>
+    <string name="auxiliary_param_rest_text">followed by</string>
+    <string-array name="auxiliary_param_text">
+        <item>@string/auxiliary_param_reps_text</item>
+        <item>@string/auxiliary_param_weight_text</item>
+        <item>@string/auxiliary_param_duration_text</item>
+        <item>@string/auxiliary_param_rest_text</item>
+    </string-array>
+    <string name="dialog_title_plan_being_created_exists">Some plan being created exists</string>
+    <string name="dialog_message_plan_being_created_exists">Previously, you were creating a plan for %s training</string>
+    <string name="dialog_title_break_creating">Stop making a plan?</string>
+    <string name="resume">Resume</string>
+    <string name="dialog_button_text_create_new">Create new</string>
+    <string name="empty_string" />
+    <string name="hint_create_plan_comment">Comment</string>
+    <string name="plan_dialog_input_name_message">Give a name to the plan.</string>
+    <string name="plan_dialog_input_name_hint">Name</string>
+    <string name="plan_dialog_input_comment_message">Write additional information about training according to this plan.</string>
+    <string name="plan_dialog_input_comment_hint">Comment</string>
+    <string name="plan_edit_no_exercises_label">No plan exercises</string>
+    <string name="plan_edit_no_exercises_helper_text">To add an exercise use the corresponding button below</string>
+    <string name="plan_name_already_exists">Plan with this name already exists</string>
+    <string name="plan_name_contains_prohibited">You have entered illegal characters</string>
+
+    <!-- Details Plan -->
+    <string name="plan_details_menu_item_edit">Edit plan</string>
+    <string name="plan_delete_confirm_title">Delete plan?</string>
+    <string name="plan_delete_confirm_message">You cannot undo this action</string>
+
+    <!-- Parameter Dialogs -->
+    <string name="hint_from">from</string>
+    <string name="hint_to">to</string>
+    <string name="title_sets_full">Number of sets per exercise</string>
+    <string name="title_reps_full">Number of repetitions</string>
+    <string name="title_rest_full">Rest time after sets</string>
+    <string name="title_duration_full">Duration of the sets</string>
+    <string name="title_weight_full">Equipment weight</string>
+    <string name="reps_exact">Exact</string>
+    <string name="reps_max">Max</string>
+    <string name="reps_range">Range</string>
+    <string name="lbs">lb</string>
+    <string name="kgs">kg</string>
+    <string name="wrong_weight_input_format">Wrong weight</string>
+
+
+    <!-- SettingsFragment -->
+    <string name="settings_fragment_headline">App settings</string>
+    <string name="change_profile_settings">Change profile settings</string>
+    <string name="label_workout_caps">WORKOUT</string>
+    <string name="label_preferences_caps">PREFERENCES</string>
+    <string name="label_account_caps">ACCOUNT</string>
+    <string name="setting_workout_reminder">Workout reminder</string>
+    <string name="setting_extra_confirm">Extra action to confirm</string>
+    <string name="setting_extra_confirm_doubleUp">Double volume-up</string>
+    <string name="setting_extra_confirm_doubleDown">Double volume-down</string>
+    <string name="setting_extra_confirm_not_set">Not set</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_language_english">English</string>
+    <string name="setting_language_russian">Russian</string>
+    <string name="setting_language_spanish">Spanish</string>
+    <string name="setting_units">Units</string>
+    <string name="setting_units_kg_cm_m">kg, cm, m</string>
+    <string name="setting_units_kg_ft_inch">kg, ft, in</string>
+    <string name="setting_units_pd_cm_m">lb, cm, m</string>
+    <string name="setting_units_pd_ft_inch">lb, ft, in</string>
+    <string name="setting_sound">Sound</string>
+    <string name="setting_vibration">Vibration</string>
+    <string name="setting_clear_statistics">Clear statistics and history</string>
+    <string name="setting_logout">Log out</string>
+    <string name="setting_logout_submit_message">Are you sure you want to log out?</string>
+    <!-- UnitsBottomSheet -->
+    <string name="title_select_units">Select units</string>
+    <string name="label_weight_caps">WEIGHT</string>
+    <string name="label_length_caps">LENGTH</string>
+    <string name="units_kilograms">Kilograms</string>
+    <string name="units_pounds">Pounds</string>
+    <string name="units_meters_cm">Meters &amp; Centimeters</string>
+    <string name="units_feet_inches">Feet &amp; inches</string>
+
+    <!-- Content Description (Project) -->
+    <string name="user_icon_content_description">@string/change_profile_settings</string>
+    <string name="bg_image_content_description">Background image</string>
+    <string name="list_icon_workout_type_image">Workout type image</string>
+    <string name="card_bg_power_training_content_description">Image of power training</string>
+    <string name="card_bg_cardio_content_description">Image of cardio</string>
+    <string name="card_bg_functional_training_content_description">Image of functional training</string>
+    <string name="card_bg_yoga_pilates_content_description">Image of yoga and pilates</string>
+    <string name="button_close_actions_content_description">Hide actions</string>
+    <string name="fab_finish_exercise_content_description">Finish exercise</string>
+    <string name="fab_add_plan_content_description">Add plan</string>
+    <string name="fab_start_workout_content_description">Start workout</string>
+    <string name="fab_filter_exercises_content_description">Filter exercises</string>
+    <string name="fab_select_exercise_content_description">Select exercise</string>
+    <string name="fab_set_plan_comment_content_description">Set plan comment</string>
+    <string name="finish_workout_dialog_title">Finish</string>
+    <string name="finish_workout_dialog_message">Do you really want to finish your workout?</string>
+    <string name="button_exercise">Exercise</string>
+    <string name="button_exercise_details">Details</string>
+    <string name="queue_exercise_next_icon_content_description">Next set icon</string>
+    <string name="fab_save_content_description">Save</string>
+
+</resources>

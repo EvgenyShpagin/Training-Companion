@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="exercise"
+            type="com.training.companion.domain.models.IconExercise" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/exercise_choose_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/exercise_icon"
+            exerciseImage="@{exercise.iconFilename}"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            app:shapeAppearance="@style/ShapeAppearance.App.Round4"
+            tools:src="@color/light_orange_40" />
+
+        <TextView
+            android:id="@+id/exercise_name"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:text="@{exercise.name}"
+            android:textColor="@color/chinese_silver"
+            android:textSize="16sp"
+            tools:text="Seated Lever Shoulder Press (parallel grip)" />
+
+    </LinearLayout>
+</layout>

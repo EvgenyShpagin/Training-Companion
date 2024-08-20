@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="completedSet"
+            type="com.training.companion.domain.models.CompletedSet" />
+
+        <import type="com.training.companion.presentation.util.UtilsKt" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/workout_container_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:alpha="0.8"
+            android:padding="8dp"
+            android:text="@string/last_exercises_title"
+            android:textColor="@color/workout_container_text_color"
+            android:textSize="@dimen/exercise_container_text_size" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="@color/dark_charcoal" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{completedSet.ordinal}"
+                android:textColor="@color/workout_container_text_color"
+                android:textSize="@dimen/exercise_container_text_size"
+                tools:text="1." />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:maxWidth="160dp"
+                android:maxLines="1"
+                android:text="@{completedSet.exercise.name}"
+                android:textColor="@color/workout_container_text_color"
+                android:textSize="@dimen/exercise_container_text_size"
+                tools:text="Incline dumbbell press" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{completedSet.reps != null ? @plurals/repetitions_with_value(completedSet.reps.value, completedSet.reps.value) : null}"
+                android:textColor="@color/workout_container_text_color"
+                android:textSize="@dimen/exercise_container_text_size"
+                tools:text="12 reps" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{@string/complete_seconds(completedSet.duration.totalSeconds)}"
+                android:textColor="@color/workout_container_text_color"
+                android:textSize="@dimen/exercise_container_text_size"
+                tools:text="119s" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

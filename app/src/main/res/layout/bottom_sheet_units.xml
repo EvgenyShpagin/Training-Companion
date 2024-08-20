@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurfaceVariant"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/fragment_horizontal_margin"
+        android:paddingEnd="@dimen/fragment_horizontal_margin"
+        android:paddingBottom="16dp">
+
+        <TextView
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/title_select_units"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            style="@style/TextAppearance.App.Settings.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/label_weight_caps" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/kilosButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/units_kilograms"
+                android:textColor="@color/sheet_button_text_color_selector"
+                app:backgroundTint="@color/sheet_button_bg_color_selector"
+                app:shapeAppearance="@style/ShapeAppearance.App.Corner.RightCut" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/poundsButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/units_pounds"
+                android:textColor="@color/sheet_button_text_color_selector"
+                app:backgroundTint="@color/sheet_button_bg_color_selector"
+                app:shapeAppearance="@style/ShapeAppearance.App.Corner.LeftCut" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextAppearance.App.Settings.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_length_caps" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/metersCmButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/units_meters_cm"
+                android:textColor="@color/sheet_button_text_color_selector"
+                app:backgroundTint="@color/sheet_button_bg_color_selector"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Corner.RightCut" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/feetInchesButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/units_feet_inches"
+                android:textColor="@color/sheet_button_text_color_selector"
+                app:backgroundTint="@color/sheet_button_bg_color_selector"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Corner.LeftCut" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

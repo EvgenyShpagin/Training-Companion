@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "985100429425",
+    "project_id": "training-companion-c0fd9",
+    "storage_bucket": "training-companion-c0fd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985100429425:android:7606608a1cf1212ec7d3d0",
+        "android_client_info": {
+          "package_name": "com.training.companion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985100429425-hkjrtjf09utm01gjl78185bqirem4spq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO5yMG0Wmf2d8p6IBcOn38HIXbEa7jhTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985100429425-hkjrtjf09utm01gjl78185bqirem4spq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

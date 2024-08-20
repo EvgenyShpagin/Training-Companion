@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.PlanEditViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.training.companion.domain.enums.PlanExerciseListState" />
+
+        <import type="com.training.companion.R" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        onBackPressed="@{(view) -> viewModel.handleOnBackPress(view)}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionGroup="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/edit_plan_menu"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:navigationIconTint="?attr/colorOnSurface"
+            app:navigationOnClickListener="@{(view) -> viewModel.onNavigationBackClick(view)}"
+            app:onMenuItemClickListener="@{() -> viewModel.onSavePlanClick(toolbar)}"
+            app:title="@string/edit_plan"
+            app:titleTextColor="?attr/colorOnSurface" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/plan_exercises"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:orientation="vertical"
+            android:requiresFadingEdge="vertical"
+            android:visibility="@{viewModel.exercisesAdded ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/bottom_list_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/bottom_list_divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:visibility="@{viewModel.exercisesAdded ? View.VISIBLE : View.INVISIBLE}"
+            app:dividerColor="?attr/colorOutline"
+            app:layout_constraintBottom_toTopOf="@id/add_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_removing_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> viewModel.onCancelRemovingButtonClick()}"
+            android:padding="0dp"
+            android:text="@string/cancel"
+            android:textColor="?attr/colorError"
+            android:visibility="@{viewModel.currentListState == PlanExerciseListState.Deleting ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/submit_removing_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submit_removing_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="?attr/colorSurfaceBright"
+            android:onClick="@{() -> viewModel.onSubmitRemovingButtonClick()}"
+            android:padding="0dp"
+            android:text="@string/submit"
+            android:textColor="?attr/colorError"
+            android:visibility="@{viewModel.currentListState == PlanExerciseListState.Deleting ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{(view) -> viewModel.onAddButtonClick(view)}"
+            android:padding="0dp"
+            android:text="@string/add"
+            android:visibility="@{viewModel.currentListState != PlanExerciseListState.Deleting ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/remove_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> viewModel.onRemoveButtonClick()}"
+            android:padding="0dp"
+            android:text="@string/remove"
+            android:visibility="@{(viewModel.currentListState != PlanExerciseListState.Deleting &amp;&amp; viewModel.exercisesAdded) ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/add_button" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/comment"
+            style="?attr/floatingActionButtonSmallStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/fab_set_plan_comment_content_description"
+            android:onClick="@{(view) -> viewModel.onCommentClick(view)}"
+            app:layout_constraintBottom_toBottomOf="@+id/cancel_removing_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cancel_removing_button"
+            app:srcCompat="@drawable/ic_comment_24"
+            app:tint="@color/orange" />
+
+        <TextView
+            visibility="@{viewModel.exercisesAdded ? View.GONE : View.VISIBLE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plan_edit_no_exercises_label"
+            android:textAppearance="?attr/textAppearanceLabelLarge"
+            android:textColor="?colorOnSurface"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_list_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

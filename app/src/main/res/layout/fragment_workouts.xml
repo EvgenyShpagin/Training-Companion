@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.WorkoutsViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.training.companion.R" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:liftOnScrollColor="@color/chinese_black">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                style="?attr/collapsingToolbarLayoutLargeStyle"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+                app:contentScrim="@color/chinese_black"
+                app:expandedTitleGravity="bottom"
+                app:expandedTitleMarginStart="16dp"
+                app:expandedTitleTextAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:title="@string/workouts_title">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:elevation="0dp"
+                    app:layout_collapseMode="pin" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/workouts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:requiresFadingEdge="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/start_workout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/orange"
+            android:contentDescription="@string/fab_start_workout_content_description"
+            android:onClick="@{(view) -> viewModel.onStartClick(view)}"
+            android:text="@string/start"
+            android:textColor="?attr/colorOnPrimarySurface"
+            android:visibility="gone"
+            app:icon="@drawable/ic_add_24"
+            app:iconTint="?attr/colorOnPrimarySurface"
+            app:layout_anchor="@id/workouts"
+            app:layout_anchorGravity="bottom|end" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="?actionBarSize"
+            android:orientation="vertical"
+            android:text="@string/no_workouts_label"
+            android:textAppearance="?attr/textAppearanceLabelLarge"
+            android:textColor="?colorOnSurface"
+            android:visibility="visible"
+            app:appearDuration="@{R.integer.mediumAnimTime}"
+            app:visibility="@{viewModel.uiState.workoutList.isEmpty() ? View.VISIBLE : View.GONE}" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_gravity="bottom"
+            app:layout_behavior=".presentation.util.behavior.BottomViewVisibilityBehavior"
+            android:background="?attr/colorSurfaceVariant">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/fragment_horizontal_margin"
+                android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+                android:onClick="@{(view) -> viewModel.onStartClick(view)}"
+                android:text="@string/start_workout" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:dividerColor="@color/divider_color" />
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

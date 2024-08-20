@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.PlanDetailsViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:transitionName="details"
+        onBackPressed="@{(view) -> viewModel.handleOnBackPress(view)}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/details_plan_menu"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:navigationOnClickListener="@{(view) -> viewModel.onNavigationBackClick(view)}"
+            app:onMenuItemClickListener="@{(menuItem) -> viewModel.onMenuItemClick(menuItem, toolbar)}"
+            app:title="@{viewModel.uiState.fetchFinished ? viewModel.uiState.plan.name : null}"
+            app:titleTextColor="?attr/colorOnSurface" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exercises_for_plan"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:requiresFadingEdge="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/comment_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight="wrap_content_constrained"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:planDetails_exercisesFullScreen="@{viewModel.uiState.commentIsEmpty}"
+            app:transitionAnimatedVisibility="@{viewModel.uiState.commentIsExpanded ? View.GONE : View.VISIBLE}" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:dividerColor="?attr/colorOutline"
+            app:layout_constraintBottom_toTopOf="@+id/comment_layout"
+            app:layout_constraintEnd_toEndOf="@+id/comment_layout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/comment_layout"
+            app:layout_constraintTop_toBottomOf="@+id/exercises_for_plan"
+            app:visibility="@{viewModel.uiState.commentIsEmpty || viewModel.uiState.commentIsExpanded ? View.GONE : View.VISIBLE}" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/comment_layout"
+            style="@style/Widget.App.TextInputLayout.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_min="88dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/exercises_for_plan"
+            app:visibility="@{viewModel.uiState.commentIsEmpty ? View.GONE : View.VISIBLE}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/comment_text_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:onClick="@{(view) -> viewModel.onCommentClick(view)}"
+                android:text="@{viewModel.uiState.plan.comment}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

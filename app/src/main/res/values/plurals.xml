@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="create_plan_param_sets">
+        <item quantity="one">%d set</item>
+        <item quantity="other">%d sets</item>
+    </plurals>
+    <plurals name="create_plan_param_reps">
+        <item quantity="one">&#160;× %s rep</item>
+        <item quantity="other">&#160;× %s reps</item>
+    </plurals>
+    <plurals name="exercise_count">
+        <item quantity="one">%d exercise</item>
+        <item quantity="other">%d exercises</item>
+    </plurals>
+    <plurals name="sets_count">
+        <item quantity="one">%d set</item>
+        <item quantity="other">%d sets</item>
+    </plurals>
+    <plurals name="body_part_count">
+        <item quantity="one">%d body part</item>
+        <item quantity="other">%d body parts</item>
+    </plurals>
+    <plurals name="fact_item_used_times">
+        <item quantity="one">used %d time</item>
+        <item quantity="other">used %d times</item>
+    </plurals>
+    <plurals name="minutes_plural_label">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+    <plurals name="seconds_plural_label">
+        <item quantity="one">%d second</item>
+        <item quantity="other">%d seconds</item>
+    </plurals>
+    <plurals name="repetitions_with_value">
+        <item quantity="one">%d rep</item>
+        <item quantity="other">%d reps</item>
+    </plurals>
+    <plurals name="body_part_count_short">
+        <item quantity="one">%d bp</item>
+        <item quantity="other">%d bp</item>
+    </plurals>
+</resources>

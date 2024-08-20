@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="set"
+            type="com.training.companion.domain.models.Set" />
+
+        <variable
+            name="showEndIcon"
+            type="boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/workout_container_shape"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/icon"
+            exerciseImage="@{set.exercise.iconFilename}"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.App.Round4"
+            tools:src="@color/orange" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{set.exercise.name}"
+            android:textColor="@color/chinese_silver"
+            android:textSize="@dimen/exercise_container_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/icon"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Swiss Ball Ab Roll-Out" />
+
+        <TextView
+            android:id="@+id/reps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{set.reps.toString()}"
+            android:textColor="@color/chinese_silver"
+            android:textSize="@dimen/exercise_container_text_size"
+            android:visibility="@{set.reps != null ? View.VISIBLE : View.GONE}"
+            app:drawableStartCompat="@drawable/ic_reps_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="12 reps" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/queue_set_chips_margin"
+            android:text="@{set.weight.toStringRoundedTo100s()}"
+            android:textColor="@color/chinese_silver"
+            android:textSize="@dimen/exercise_container_text_size"
+            android:visibility="@{set.weight != null ? View.VISIBLE : View.INVISIBLE}"
+            app:drawableStartCompat="@drawable/ic_weight_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/reps"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="32 kg"
+            tools:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/arrow_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/bg_image_content_description"
+            android:src="@drawable/ic_arrow_next_24"
+            android:visibility="@{showEndIcon ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/chinese_silver" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

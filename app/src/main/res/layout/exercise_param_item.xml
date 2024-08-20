@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="uiState"
+            type="com.training.companion.presentation.viewmodels.base.SetDetailsViewModel.ItemState" />
+
+        <import type="android.view.View" />
+        <import type="androidx.core.content.ContextCompat" />
+    </data>
+
+    <LinearLayout
+        animateOnAppear="@{uiState.isVisible ? View.VISIBLE : View.GONE}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            isSelected="@{uiState.isChosen}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selectable_exercise_param_shape"
+            android:onClick="@{uiState.onClickListener}"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_marginStart="20dp"
+                android:drawableStart="@{ContextCompat.getDrawable(context, uiState.iconRes)}"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="@{context.getString(uiState.titleRes)}"
+                android:textColor="@color/light_orange"
+                android:textSize="16sp"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/units_text"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginEnd="24dp"
+                android:drawablePadding="8dp"
+                android:gravity="center|end"
+                android:text="@{uiState.stringWrapperId == null ? uiState.value : context.getString(uiState.stringWrapperId, uiState.value)}"
+                android:textColor="@color/light_orange"
+                android:textSize="16sp"
+                app:visibility="@{uiState.isChosen ? View.VISIBLE : View.GONE}"
+                tools:text="Chosen Value" />
+
+            <ImageView
+                android:id="@+id/arrow_icon"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:importantForAccessibility="no"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_arrow_forward_12"
+                app:tint="@color/light_orange"
+                app:visibility="@{uiState.isChosen ? View.GONE : View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/helper_text_rest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="6dp"
+            android:alpha="0.7"
+            android:fontFamily="@font/roboto_light"
+            android:text="@{context.getString(uiState.helperTextRes)}"
+            android:textColor="@color/light_orange"
+            android:textSize="15sp"
+            tools:text="The number of repetitions in one set of the exercise" />
+
+    </LinearLayout>
+</layout>

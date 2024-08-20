@@ -1,0 +1,10 @@
+package com.training.companion.domain.usecases
+
+import com.training.companion.domain.enums.WorkoutStage
+import com.training.companion.domain.repositories.SessionRepository
+
+class GetCurrentStageUseCase(private val sessionRepository: SessionRepository) {
+    operator fun invoke(): WorkoutStage {
+        return sessionRepository.getCurrentStage()
+    }
+}

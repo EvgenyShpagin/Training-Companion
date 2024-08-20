@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange">#CF5101</color>
+    <color name="dark_orange">#883D0D</color>
+    <color name="light_orange">#F7DBCD</color>
+    <color name="light_orange_25">#40F7DBCD</color>
+    <color name="light_orange_40">#60F7DBCD</color>
+    <color name="white">@android:color/white</color>
+    <color name="light_gray">#D1D1D1</color>
+    <color name="baltic_sea">#18171F</color>
+    <color name="cod_gray">#0A0A0A</color>
+    <color name="mine_shaft">#1F1F1F</color>
+    <color name="eerie_black">#1A1A1A</color>
+    <color name="sea_pink">#EF9A9A</color>
+    <color name="grey_cloud">#b5b5b5</color>
+    <color name="dark_charcoal">#333333</color>
+    <color name="candy_pink">#E97474</color>
+    <color name="chinese_silver">#CCCCCC</color>
+    <color name="chinese_black">#151515</color>
+    <color name="dark_orange_40">#40883D0D</color>
+    <color name="primary_disabled">#4DCF5101</color>
+    <color name="default_plan_card_background">#181818</color>
+
+    <color name="plan_exercise_param_text_primary">#BAF7DBCD</color>
+    <color name="plan_exercise_param_text_secondary">#85F7DBCD</color>
+
+    <color name="divider_color">#333333</color>
+    <color name="divider_alt_color">#212121</color>
+
+    <color name="filter_item_background_color">#961A1A1A</color>
+    <color name="filter_item_checked_background_color">#96CF5101</color>
+
+    <color name="plan_card_stroke_color">@color/divider_color</color>
+    <color name="workout_type_card_stroke_color">@color/divider_color</color>
+    <color name="workout_type_card_button_color">#B7151515</color>
+
+    <color name="workout_container_text_color">#B7A298</color>
+</resources>

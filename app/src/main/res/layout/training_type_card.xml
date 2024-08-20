@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="imageSrc"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="imageContentDescription"
+            type="String" />
+
+        <variable
+            name="text"
+            type="String" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="@color/workout_type_card_stroke_color">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/eerie_black">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@{imageContentDescription}"
+                android:scaleType="centerCrop"
+                android:src="@{imageSrc}" />
+
+            <Button
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="8dp"
+                android:clickable="false"
+                android:backgroundTint="@color/workout_type_card_button_color"
+                android:text="@{text}"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/light_orange"
+                app:strokeColor="@color/light_orange_40" />
+
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

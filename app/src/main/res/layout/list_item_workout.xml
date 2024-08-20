@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/training_type_icon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:contentDescription="@string/list_icon_workout_type_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/type_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?colorOnSurface"
+            app:layout_constraintBottom_toTopOf="@id/performance_text"
+            app:layout_constraintEnd_toStartOf="@+id/date_text"
+            app:layout_constraintStart_toEndOf="@+id/training_type_icon"
+            app:layout_constraintTop_toTopOf="@+id/training_type_icon"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Strength" />
+
+        <TextView
+            android:id="@+id/performance_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?colorOnSurface"
+            app:layout_constraintBottom_toBottomOf="@+id/training_type_icon"
+            app:layout_constraintEnd_toStartOf="@+id/date_text"
+            app:layout_constraintStart_toEndOf="@+id/training_type_icon"
+            app:layout_constraintTop_toBottomOf="@+id/type_label"
+            tools:text="3 exercises • 9 sets • 3 bp" />
+
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceLabelSmall"
+            android:textColor="?colorOnSurfaceVariant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="13.04" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

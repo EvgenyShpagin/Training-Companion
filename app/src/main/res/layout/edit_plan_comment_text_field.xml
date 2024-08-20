@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_field_layout"
+        style="@style/Widget.App.TextInputLayout.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/plan_edit_dialog_input_field_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="@dimen/plan_edit_dialog_input_field_margin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textMultiLine"
+            android:maxLines="12" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+</FrameLayout>

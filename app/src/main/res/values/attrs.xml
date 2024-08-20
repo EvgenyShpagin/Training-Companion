@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QueueExerciseView">
+        <attr name="descriptionText" format="string" />
+        <attr name="exerciseTitle" format="string" />
+        <attr name="exerciseIcon" format="reference" />
+        <attr name="exerciseIconSize" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="CompletedExercisesView">
+        <attr name="exercises_title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ActionsCardView">
+        <attr name="actions_title" format="string" />
+    </declare-styleable>
+
+    <attr name="actionCardViewAppearance" format="reference" />
+
+    <declare-styleable name="WorkoutPlanView">
+        <attr name="displayType" format="enum">
+            <enum name="full" value="0" />
+            <enum name="actionsHidden" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

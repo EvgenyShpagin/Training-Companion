@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.ExerciseRepsViewModel" />
+
+        <import type="com.training.companion.domain.models.Reps" />
+        <import type="com.training.companion.domain.models.Reps.Range" />
+        <import type="kotlin.ranges.IntRange" />
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:theme="@style/ThemeOverlay.App.BottomSheetDialog"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <TextView
+            android:id="@+id/sheet_title"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/title_reps_full"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/mTitleDivider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="?attr/colorOutline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sheet_title" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/button_toggle_group"
+            onSegmentedToggleGroupClick="@{(group, checkedId, isChecked) -> viewModel.onRepsFormatChangeButtonClick(checkedId, isChecked)}"
+            segmentedToggleGroupChecked="@{viewModel.checkedButtonId}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sheet_title"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/button_exact"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reps_exact" />
+
+            <Button
+                android:id="@+id/button_max"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reps_max" />
+
+            <Button
+                android:id="@+id/button_range"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reps_range" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <FrameLayout
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/exercise_param_block_height"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/plan_exercise_param_item_shape_selected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_toggle_group">
+
+            <com.shawnlin.numberpicker.NumberPicker
+                android:id="@+id/reps_picker_exact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="@{viewModel.uiState.exactContainerIsVisible ? View.VISIBLE : View.INVISIBLE}"
+                app:np_dividerColor="@color/light_orange_40"
+                app:np_dividerType="underline"
+                app:np_itemSpacing="12dp"
+                app:np_max="100"
+                app:np_maxFlingVelocityCoefficient="3"
+                app:np_min="1"
+                app:np_orientation="horizontal"
+                app:np_selectedTextColor="?attr/colorOnSurfaceVariant"
+                app:np_selectedTextSize="28sp"
+                app:np_textColor="@color/light_orange_40"
+                app:np_textSize="26sp"
+                app:np_wheelItemCount="7"
+                app:onValueChangedListener="@{(view, oldVal, newVal) -> viewModel.onRepsExactChanged(newVal)}"
+                app:value="@{viewModel.uiState.repsAsExact}"
+                tools:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/reps_max"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="24sp"
+                android:visibility="@{viewModel.uiState.maxContainerIsVisible ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.uiState.rangeContainerIsVisible ? View.VISIBLE : View.INVISIBLE}"
+                tools:visibility="gone">
+
+                <EditText
+                    android:id="@+id/range_from"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hint_from"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:onTextChanged="@{(text, a, b, c) -> viewModel.onRepsRangeChanged(text, rangeTo.getText())}"
+                    android:text="@{viewModel.uiState.repsAsRangeStart}"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textColorHint="@color/light_orange_40"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/dash_char"
+                    android:textColor="@{viewModel.uiState.repsAsRangeEnd != null || viewModel.uiState.repsAsRangeEnd != null ? @color/light_orange : @color/light_orange_40}"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/range_to"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hint_to"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:onTextChanged="@{(text, a, b, c) -> viewModel.onRepsRangeChanged(rangeFrom.getText(), text)}"
+                    android:text="@{viewModel.uiState.repsAsRangeEnd}"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textColorHint="@color/light_orange_40"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/button_remove"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32dp"
+            android:enabled="@{viewModel.uiState.removeButtonIsEnabled}"
+            android:text="@string/remove"
+            app:layout_constraintBottom_toBottomOf="@+id/button_submit"
+            app:layout_constraintEnd_toStartOf="@+id/button_submit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button_submit" />
+
+        <Button
+            android:id="@+id/button_submit"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32dp"
+            android:layout_marginTop="@dimen/_32dp"
+            android:enabled="@{viewModel.uiState.submitButtonIsEnabled}"
+            android:text="@string/submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button_remove"
+            app:layout_constraintTop_toBottomOf="@+id/background" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

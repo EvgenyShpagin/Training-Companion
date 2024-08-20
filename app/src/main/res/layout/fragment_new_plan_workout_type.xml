@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.NewPlanTypeViewModel" />
+
+        <import type="com.training.companion.domain.enums.WorkoutType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.fragments.NewPlanWorkoutTypeFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:navigationOnClickListener="@{(view) -> viewModel.onNavigationBackClick(view)}"
+            app:title="@string/edit_plan"
+            app:titleTextColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/choose_type_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/start_workout_fragment_title"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <TextView
+            android:id="@+id/support_text_choose_workout_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_type_title" />
+
+        <include
+            android:id="@+id/power_training_card"
+            layout="@layout/training_type_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(view) -> viewModel.onWorkoutTypeSelect(view, WorkoutType.Strength)}"
+            app:layout_constraintBottom_toTopOf="@id/functional_training_card"
+            app:layout_constraintHeight_max="250dp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/cardio_card"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintWidth_max="180dp"
+            bind:imageContentDescription="@{@string/card_bg_power_training_content_description}"
+            bind:imageSrc="@{@drawable/image_strength}"
+            bind:text="@{@string/strength}" />
+
+        <include
+            android:id="@+id/cardio_card"
+            layout="@layout/training_type_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"            android:onClick="@{(view) -> viewModel.onWorkoutTypeSelect(view, WorkoutType.Cardio)}"
+            app:layout_constraintBottom_toTopOf="@id/yoga_pilates_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="250dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/power_training_card"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintWidth_max="180dp"
+            bind:imageContentDescription="@{@string/card_bg_cardio_content_description}"
+            bind:imageSrc="@{@drawable/image_cardio}"
+            bind:text="@{@string/cardio}" />
+
+        <include
+            android:id="@+id/functional_training_card"
+            layout="@layout/training_type_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/fragment_horizontal_margin"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{(view) -> viewModel.onWorkoutTypeSelect(view, WorkoutType.Functional)}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/yoga_pilates_card"
+            app:layout_constraintHeight_max="250dp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/power_training_card"
+            app:layout_constraintWidth_max="180dp"
+            bind:imageContentDescription="@{@string/card_bg_functional_training_content_description}"
+            bind:imageSrc="@{@drawable/image_functional}"
+            bind:text="@{@string/functional}" />
+
+        <include
+            android:id="@+id/yoga_pilates_card"
+            layout="@layout/training_type_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="@dimen/fragment_horizontal_margin"            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(view) -> viewModel.onWorkoutTypeSelect(view, WorkoutType.YogaOrPilates)}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="250dp"
+            app:layout_constraintStart_toEndOf="@+id/functional_training_card"
+            app:layout_constraintTop_toBottomOf="@+id/cardio_card"
+            app:layout_constraintWidth_max="180dp"
+            bind:imageContentDescription="@{@string/card_bg_yoga_pilates_content_description}"
+            bind:imageSrc="@{@drawable/image_yoga_pilates}"
+            bind:text="@{@string/yoga_and_pilates}" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

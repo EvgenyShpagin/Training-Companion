@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.training.companion.presentation.viewmodels.base.SetDetailsViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.training.companion.domain.enums.WeightUnit" />
+
+        <import type="com.training.companion.domain.models.Time.Format" />
+    </data>
+
+    <LinearLayout
+        onBackPressed="@{(view) -> viewModel.onBackPressed(view)}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mine_shaft"
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.App.BottomSheetDialog"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <TextView
+            android:id="@+id/sheet_title"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/title_exercise_details"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="?attr/colorOutline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sheet_title" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fragment_horizontal_margin"
+                    android:layout_marginRight="@dimen/fragment_horizontal_margin"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/sets_item"
+                        layout="@layout/exercise_param_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exercise_param_blocks_space"
+                        bind:uiState="@{viewModel.setState}" />
+
+                    <include
+                        android:id="@+id/rest_item"
+                        layout="@layout/exercise_param_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exercise_param_blocks_space"
+                        bind:uiState="@{viewModel.restTimeState}" />
+
+                    <include
+                        android:id="@+id/duration_item"
+                        layout="@layout/exercise_param_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exercise_param_blocks_space"
+                        bind:uiState="@{viewModel.durationState}" />
+
+                    <include
+                        android:id="@+id/reps_item"
+                        layout="@layout/exercise_param_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exercise_param_blocks_space"
+                        bind:uiState="@{viewModel.repsState}" />
+
+                    <include
+                        android:id="@+id/weight_item"
+                        layout="@layout/exercise_param_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exercise_param_blocks_space"
+                        bind:uiState="@{viewModel.weightState}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </ScrollView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/submit_button"
+                style="@style/Widget.App.FAB.White"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/fab_increased_bottom_margin"
+                android:alpha="@{viewModel.allowedToNavigateNext ? 1.0f : 0.5f}"
+                android:contentDescription="@string/fab_save_content_description"
+                android:enabled="@{viewModel.allowedToNavigateNext}"
+                android:onClick="@{(view) -> viewModel.onSubmitClick(view)}"
+                app:srcCompat="@drawable/ic_check_24" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</layout>
